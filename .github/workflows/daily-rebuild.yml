@@ -1,0 +1,19 @@
+name: Daily Rebuild
+on:
+  schedule:
+    - cron: '5 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger host deploy webhook
+        env:
+          HOOK_URL: ${{ secrets.DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK_URL" ]; then
+            echo "DEPLOY_HOOK_URL secret not set — skipping"
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK_URL"
