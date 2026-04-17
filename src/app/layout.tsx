@@ -28,6 +28,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de" className={`${sans.variable} ${serif.variable}`}>
+      <head>
+        {process.env.NODE_ENV === 'production' && (
+          <script
+            defer
+            data-domain="gebetszeiten24.de"
+            src="https://plausible.io/js/script.js"
+          />
+        )}
+      </head>
       <body className="flex min-h-screen flex-col font-sans antialiased">
         <Header />
         <div className="flex-1">{children}</div>
