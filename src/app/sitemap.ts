@@ -3,6 +3,8 @@ import { cities } from '@/data/cities';
 
 const BASE = 'https://gebetszeiten24.de';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const staticRoutes: MetadataRoute.Sitemap = [
