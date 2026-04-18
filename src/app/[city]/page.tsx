@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { cities } from '@/data/cities';
 import { findCityBySlug, findNearbyCities } from '@/lib/cities';
+import { stateSlugMap } from '@/lib/states';
 import { computePrayerTimes } from '@/lib/adhan';
 import { cityMetadata, placeJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo';
 import { formatDateLong, formatTime } from '@/lib/utils';
@@ -110,12 +111,30 @@ export default async function CityPage({ params }: { params: Promise<Params> }) 
 
       <section className="mt-10 rounded-3xl border border-[var(--color-border)] p-6 text-sm text-[var(--color-muted)]">
         <p>
-          {city.name} liegt in {city.state} bei {city.lat.toFixed(3)}°N,{' '}
-          {city.lng.toFixed(3)}°E und hat etwa{' '}
-          {city.population.toLocaleString('de-DE')} Einwohner. Die angezeigten
-          Gebetszeiten werden mit astronomischen Berechnungen ermittelt — Standard
-          ist die Muslim World League-Methode, die in Deutschland und weiten
-          Teilen Europas üblich ist.
+          {city.name} ist eine{' '}
+          {city.population >= 500_000
+            ? 'Großstadt'
+            : city.population >= 100_000
+              ? 'Großstadt'
+              : 'Stadt'}{' '}
+          in{' '}
+          <Link
+            href={`/bundesland/${stateSlugMap[city.state]}`}
+            className="text-sage underline-offset-2 hover:underline"
+          >
+            {city.state}
+          </Link>{' '}
+          mit rund {city.population.toLocaleString('de-DE')} Einwohnern und
+          einer geschätzten muslimischen Gemeinschaft von etwa{' '}
+          {Math.round((city.population * 0.055) / 1000) * 1000 >= 1000
+            ? `${(Math.round((city.population * 0.055) / 1000) * 1000).toLocaleString('de-DE')} Personen`
+            : 'einigen Hundert Personen'}
+          . Die Gebetszeiten werden täglich neu berechnet — auf Basis der
+          geographischen Koordinaten ({city.lat.toFixed(3)}°N,{' '}
+          {city.lng.toFixed(3)}°E) und astronomischer Algorithmen.{' '}
+          {city.lat > 51
+            ? `Da ${city.name} nördlich des 51. Breitengrades liegt, können die Gebetszeiten im Sommer besonders stark variieren — Isha fällt in Hochsommernächten erst spät ein.`
+            : `Die Lage in Süd- bzw. Mitteldeutschland sorgt für vergleichsweise stabile Gebetszeiten im Jahresverlauf.`}
         </p>
       </section>
 

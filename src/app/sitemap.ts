@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { cities } from '@/data/cities';
+import { allStates } from '@/lib/states';
 
 const BASE = 'https://gebetszeiten24.de';
 
@@ -25,5 +26,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
   ]);
-  return [...staticRoutes, ...cityRoutes];
+  const stateRoutes: MetadataRoute.Sitemap = allStates.map((s) => ({
+    url: `${BASE}/bundesland/${s.slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+  return [...staticRoutes, ...stateRoutes, ...cityRoutes];
 }
