@@ -1,0 +1,21 @@
+{
+  "name": "Gebetszeiten24",
+  "short_name": "Gebetszeiten",
+  "description": "Gebetszeiten für alle großen Städte in Deutschland",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f3ee",
+  "theme_color": "#5c6b5a",
+  "icons": [
+    {
+      "src": "/apple-icon",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

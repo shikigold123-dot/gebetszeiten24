@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   description:
     'Genaue Gebetszeiten für alle großen Städte in Deutschland. Alle Berechnungsmethoden, Monatsansicht, werbefrei.',
-  alternates: { canonical: '/' },
+  alternates: { canonical: 'https://gebetszeiten24.de/' },
   openGraph: { type: 'website', locale: 'de_DE', siteName: 'Gebetszeiten24' },
   robots: { index: true, follow: true },
 };
@@ -29,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de" className={`${sans.variable} ${serif.variable}`}>
       <head>
+        <link rel="manifest" href="/manifest.json" />
         {process.env.NODE_ENV === 'production' && (
           <script
             defer

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { cities } from '@/data/cities';
 import { CitySearch } from '@/components/city-search';
 import { CityCard } from '@/components/city-card';
+import { JsonLd } from '@/components/json-ld';
 import { formatDateLong } from '@/lib/utils';
 import { formatHijri } from '@/lib/hijri';
 
@@ -9,7 +10,32 @@ export const metadata: Metadata = {
   title: 'Gebetszeiten24 — Gebetszeiten für alle Städte in Deutschland',
   description:
     'Genaue Gebetszeiten für die 100 größten Städte Deutschlands. Alle Berechnungsmethoden, Monatsansicht, werbefrei und DSGVO-konform.',
-  alternates: { canonical: '/' },
+  alternates: { canonical: 'https://gebetszeiten24.de/' },
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Gebetszeiten24',
+  url: 'https://gebetszeiten24.de',
+  description: 'Gebetszeiten für die 100 größten Städte in Deutschland',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://gebetszeiten24.de/{search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Gebetszeiten24',
+  url: 'https://gebetszeiten24.de',
+  description:
+    'Kostenlose, werbefreie Gebetszeiten für alle großen Städte in Deutschland. DSGVO-konform, keine Cookies.',
 };
 
 export default function HomePage() {
@@ -18,6 +44,7 @@ export default function HomePage() {
 
   return (
     <main className="relative mx-auto max-w-5xl px-6 py-16">
+      <JsonLd data={[websiteSchema, organizationSchema]} />
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-96 text-sage opacity-[0.04]"
         aria-hidden

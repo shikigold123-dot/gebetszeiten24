@@ -1,0 +1,37 @@
+# Gebetszeiten24
+
+> Kostenlose, werbefreie Gebetszeiten für die 100 größten Städte in Deutschland.
+> Berechnet mit astronomischen Algorithmen nach 13 anerkannten Methoden.
+
+## Was ist Gebetszeiten24?
+
+Gebetszeiten24 (https://gebetszeiten24.de) berechnet die fünf täglichen islamischen Gebetszeiten — Fajr, Dhuhr, Asr, Maghrib und Isha — für alle großen deutschen Städte. Die Berechnung basiert auf der Open-Source-Bibliothek adhan und unterstützt 13 Berechnungsmethoden (u.a. MWL, Diyanet, ISNA, Ägyptische Behörde).
+
+## Abgedeckte Städte
+
+100 Städte in Deutschland, darunter: Berlin, Hamburg, München, Köln, Frankfurt am Main, Stuttgart, Düsseldorf, Leipzig, Dortmund, Essen — sowie alle Bundesländer unter /bundesland/.
+
+## Berechnungsmethoden
+
+- Muslim World League (MWL) — Standard, empfohlen für Deutschland
+- Diyanet İşleri Başkanlığı (Türkei)
+- Egyptian General Authority of Survey
+- University of Islamic Sciences, Karachi
+- Umm al-Qura University, Makkah
+- und 8 weitere Methoden
+
+## Datenschutz & Technik
+
+- Keine Tracking-Cookies
+- Keine personenbezogenen Daten
+- DSGVO-konform
+- Plausible Analytics (datenschutzfreundlich, kein Cross-Site-Tracking)
+- Statische Website (Next.js, Cloudflare Pages)
+
+## Sitemap
+
+https://gebetszeiten24.de/sitemap.xml
+
+## Kontakt / Impressum
+
+https://gebetszeiten24.de/impressum

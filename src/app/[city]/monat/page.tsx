@@ -34,6 +34,7 @@ export async function generateMetadata({
     title: `Gebetszeiten ${city.name} — ${monthName} Monatsansicht`,
     description: `Alle Gebetszeiten für ${city.name} im Monat ${monthName}. Druckbare Monatsübersicht mit Fajr, Sonnenaufgang, Dhuhr, Asr, Maghrib und Isha.`,
     alternates: { canonical: `/${city.slug}/monat` },
+    robots: { index: false, follow: true },
   };
 }
 

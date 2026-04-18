@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import type { City } from '@/data/cities';
 import { formatDateLong } from './utils';
 
-export function cityMetadata(city: City, date: Date): Metadata {
-  const dateStr = formatDateLong(date);
-  const title = `Gebetszeiten ${city.name} — ${dateStr}`;
-  const description = `Gebetszeiten für ${city.name} am ${dateStr}. Alle Berechnungsmethoden, Monatsansicht, werbefrei. Jetzt aktuelle Zeiten abrufen.`;
+export function cityMetadata(city: City, _date: Date): Metadata {
+  const title = `Gebetszeiten ${city.name} — täglich aktuell`;
+  const description = `Gebetszeiten für ${city.name} — Fajr, Dhuhr, Asr, Maghrib, Isha. Alle Berechnungsmethoden, Monatsansicht, werbefrei und DSGVO-konform.`;
   return {
     title,
     description,
