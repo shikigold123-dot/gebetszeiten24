@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { prayerMethods } from '@/lib/prayer-methods';
+import { prayerMethods, DEFAULT_METHOD } from '@/lib/prayer-methods';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Card } from '@/components/ui/card';
 
@@ -30,7 +30,14 @@ export default function MethodsPage() {
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {prayerMethods.map((m) => (
           <Card key={m.key}>
-            <h2 className="font-serif text-xl">{m.label}</h2>
+            <div className="flex items-center gap-2">
+              <h2 className="font-serif text-xl">{m.label}</h2>
+              {m.key === DEFAULT_METHOD && (
+                <span className="rounded-full bg-sage px-2 py-0.5 text-xs text-cream">
+                  Empfohlen
+                </span>
+              )}
+            </div>
             <p className="mt-2 text-sm text-[var(--color-muted)]">{m.description}</p>
             <dl className="mt-4 grid grid-cols-2 gap-2 text-sm">
               <dt className="text-[var(--color-muted)]">Fajr-Winkel</dt>

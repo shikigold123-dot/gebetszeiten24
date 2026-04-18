@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { prayerMethods } from '@/lib/prayer-methods';
+import { prayerMethods, DEFAULT_METHOD } from '@/lib/prayer-methods';
 import { readPrefs, writePrefs } from '@/lib/user-prefs';
 import type { MethodKey } from '@/lib/prayer-methods';
 import { Select } from './ui/select';
@@ -33,7 +33,7 @@ export function MethodSelector() {
         <Select value={method} onChange={(e) => updateMethod(e.target.value)}>
           {prayerMethods.map((m) => (
             <option key={m.key} value={m.key}>
-              {m.label}
+              {m.label}{m.key === DEFAULT_METHOD ? ' (empfohlen)' : ''}
             </option>
           ))}
         </Select>
